@@ -1,0 +1,13 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Welcome to the Flask Demo App</h1>
+    <p>This is a simple Flask app that demonstrates how to create a web application using the Flask framework.</p>
+    <p>Click on the links below to navigate to different pages:</p>
+    <ul>
+        <li><a href="{{ url_for('app.login')}}">Login</a></li>
+        <li><a href="{{ url_for('app.register')}}">Sign Up</a></li>
+        <li><a href="{{ url_for('app.users') }}">View Registered Users</a></li>
+    </ul>
+{% endblock %}
