@@ -1,4 +1,11 @@
 """Main application setup for the Flask app."""
+# You need to create a simple application
+# where authorization and registration will be implemented,
+# a main page that will have a link to the registration or a login page,
+# another page with shared access
+# where the number of registered users will be displayed and
+# a page that will be available only to the authorized user
+# and displayed username greetings.
 
 import os
 
