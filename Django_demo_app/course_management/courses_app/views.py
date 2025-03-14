@@ -1,9 +1,7 @@
 """Views for course access with user authentication in the courses app."""
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 
-@login_required
 def course_view(request):
     """Render the course page for authenticated users.
 
@@ -13,18 +11,9 @@ def course_view(request):
     Returns:
         HttpResponse: A response with a welcome message.
     """
-    return render(request, 'courses_app/courses_page.html',
-                  {'message': 'This is the Courses page'})
-
-
-def no_permission_view(request):
-    """Render a message for users who are not authenticated.
-
-    Args:
-        request (HttpRequest): The HTTP request object.
-
-    Returns:
-        HttpResponse: A response with a permission denial message.
-    """
-    return render(request, 'courses_app/no_permissions_page.html',
-                  {'message': 'You have no permissions to view this page'})
+    message = ('This is the Courses page'
+               if request.user.is_authenticated
+               else 'You have no permissions to view this page'
+               )
+    return render(
+        request, 'courses_app/courses_page.html', {'message': message})
