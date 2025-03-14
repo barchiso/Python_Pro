@@ -38,7 +38,7 @@ class CustomUserManager(BaseUserManager):
             self, email, phone_number, password=None, **extra_fields):
         """Create and return a new superuser.
 
-        Args: 
+        Args:
             email (str): The email address of the user.
             phone_number (str): The phone number of the user.
             password (str): The password of the user.
