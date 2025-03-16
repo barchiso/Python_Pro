@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .user-info {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .username {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .profile-picture {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<html >
+    <body>
+        <div class="user-info">
+            {% load custom_tags %}
+
+            {% if user.is_authenticated %}
+                {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                {% else %}
+                    <p><strong>No Profile Picture</strong></p>
+                {% endif %}
+                <p><strong>Full name: {{ user.first_name|join_strings:user.last_name }}</strong></p>
+                <p><strong>User:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                {% if user.date_of_birth %}
+                    <p><strong>Date of Birth:</strong> {{ user.date_of_birth }}</p>
+                {% endif %}
+                <p><strong>Preferred Language:</strong> {{ user.get_preferred_language_display }}</p>
+                <p><strong>Today:</strong> {% get_current_time %}</p>
+            {% else %}
+                <p><strong>Guest:</strong> You are not logged in.</p>
+            {% endif %}
+        </div>
+    </body>
+</html>
