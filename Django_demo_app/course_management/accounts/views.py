@@ -24,4 +24,3 @@ def user_info_page(request):
         HttpResponse: The response object
     """
     return render(request, 'accounts/user_info.html')
-
