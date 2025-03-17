@@ -12,3 +12,10 @@ It is necessary to create a new application and implement a custom User model.
 You can use both AbstractUser and AbstractBaseUser, PermissionMixin.
 Fields and their quantity - according to your preferences.
 
+# HW-7. Template tags.
+Write at least three different template tags, including: 
+- A simple tag (for example, returning the current date or formatting the text). 
+- Tag with arguments (for example, combining lines or cropping text to a given length). 
+- Inclusive tag (which connects another template or executes a certain logic).
+ 13 changes: 13 additions & 0 deletions13  
+Django_demo_app/course_management/accounts/templates/accounts/tags.html
