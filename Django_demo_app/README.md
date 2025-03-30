@@ -38,3 +38,6 @@ Add validation: if a field has an invalid value (e.g., a date in the future, too
 Additional task (optional):
 If your project has a related model (via ForeignKey or ManyToMany), add it as a tab (inline) in the main model edit form.
 Implement a column in the list that shows the number of related objects or other aggregated information.
+
+# HW-9. Django mixins
+You need to create a mixins.py file in the project and write 10 mixins. At least 3 of them are noteworthy for the luff from your application

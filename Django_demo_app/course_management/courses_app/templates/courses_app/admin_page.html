@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ message }}</h1>
+        <p>Welcome, admin! You have full access to the courses management system.</p>
+        <a href="{% url 'add_course' %}">Add a New Course</a>
+    </div>
+</body>
+</html>
