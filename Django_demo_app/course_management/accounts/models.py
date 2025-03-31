@@ -1,9 +1,6 @@
-"""This file is used to create custom user model. """
-from django.contrib.auth.models import (
-    AbstractUser,
-    BaseUserManager,
-    PermissionsMixin,
-)
+"""This file is used to create custom user model."""
+from django.contrib.auth.models import (AbstractUser, BaseUserManager,
+                                        PermissionsMixin)
 from django.db import models
 from django.utils import timezone
 
@@ -18,7 +15,10 @@ class CustomUserManager(BaseUserManager):
             email (str): The email address of the user.
             phone_number (str): The phone number of the user.
             password (str): The password of the user.
-            **extra_fields: Additional fields to create the user with.
+            extra_fields (dict): Additional fields to create the user with.
+
+        Raises:
+            ValueError: If the email or phone number is not provided.
 
         Returns:
             User: The newly created user.
@@ -42,7 +42,10 @@ class CustomUserManager(BaseUserManager):
             email (str): The email address of the user.
             phone_number (str): The phone number of the user.
             password (str): The password of the user.
-            **extra_fields: Additional fields to create the user with.
+            extra_fields (dict): Additional fields to create the user with.
+
+        Raises:
+            ValueError: If the email or phone number is not provided.
 
         Returns:
             User: The newly created superuser.
@@ -71,6 +74,7 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(AbstractUser, PermissionsMixin):
     """Custom user model for the application."""
+
     email = models.EmailField(unique=True, verbose_name='Email address')
     phone_number = models.CharField(
         max_length=15, unique=True, verbose_name='Phone number')
@@ -100,6 +104,7 @@ class CustomUser(AbstractUser, PermissionsMixin):
 
     class Meta:
         """Meta options for the CustomUser model."""
+
         verbose_name = 'User'
         verbose_name_plural = 'Users'
         permissions = [
@@ -123,3 +128,59 @@ class CustomUser(AbstractUser, PermissionsMixin):
             str: The full name of the user.
         """
         return f'{self.first_name} {self.last_name}'.strip()
+
+
+class UserAddress(models.Model):
+    """Model to store user addresses."""
+
+    user = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE, related_name='addresses')
+    postal_code = models.CharField(max_length=10, verbose_name='Postal code')
+    country = models.CharField(max_length=100, verbose_name='Country')
+    city = models.CharField(max_length=100, verbose_name='City')
+    street = models.CharField(max_length=100, verbose_name='Street')
+
+    class Meta:
+        """Meta options for the UserAddress model."""
+
+        verbose_name = 'User Address'
+        verbose_name_plural = 'User Addresses'
+
+    def __str__(self):
+        """Return the string representation of the address.
+
+        Returns:
+            str: The string representation of the address.
+        """
+        return f'{self.country}, {self.city}, {self.street}'
+
+
+class UserPayment(models.Model):
+    """Model to store user payment information."""
+
+    user = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE, related_name='payments')
+    amount = models.DecimalField(
+        max_digits=10, decimal_places=2, verbose_name='Amount')
+    payment_method = models.CharField(max_length=50, choices=[
+        ('card', 'Card'),
+        ('cash', 'Cash'),
+        ('iban', 'Account'),
+        ('online', 'Online'),
+    ], default='card', verbose_name='Payment method')
+    payment_date = models.DateTimeField(
+        default=timezone.now, verbose_name='Payment date')
+
+    class Meta:
+        """Meta options for the UserPayment model."""
+
+        verbose_name = 'User Payment'
+        verbose_name_plural = 'User Payments'
+
+    def __str__(self):
+        """Return the string representation of the payment.
+
+        Returns:
+            str: The string representation of the payment.
+        """
+        return f'{self.user} - {self.amount} ({self.payment_date})'
