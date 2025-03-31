@@ -1,1 +1,38 @@
-<p>{{ message }}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses Page</title>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+
+    <h2>All Courses</h2>
+    
+    <!-- Add course button -->
+    <a href="{% url 'add_course' %}">
+        <button type="button">Add Course</button>
+    </a>
+
+    <ul>
+        {% for course in courses %}
+            <li>
+                <strong>{{ course.title }}</strong>: {{ course.description }}
+                <br>
+                <em>Created at: {{ course.created_at }}</em>
+                <br>
+                <em>Created by: {{ course.created_by }}</em>
+                <br>
+                <!-- Link to view enrolled course -->
+                <a href="{% url 'enrolled_course' course.pk %}">View Enrolled Course</a>
+                <br>
+                <!-- Delete link for each course -->
+                <a href="{% url 'delete_course' course.pk %}" onclick="return confirm('Are you sure you want to delete this course?');">Delete</a>
+            </li>
+        {% empty %}
+            <li>No courses available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

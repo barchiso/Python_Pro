@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrolled Course</title>
+</head>
+<body>
+    <h1>Enrolled Course</h1>
+
+    <h2>{{ course.title }}</h2>
+    <p>{{ course.description }}</p>
+    <p><strong>Created by:</strong> {{ course.created_by }}</p>
+    <p><strong>Created at:</strong> {{ course.created_at }}</p>
+
+    <a href="{% url 'course_view' %}">Back to Courses</a>
+</body>
+</html>
