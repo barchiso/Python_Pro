@@ -29,7 +29,6 @@ class LoginView(APIView):
         Returns:
             Response: A JSON response with access and refresh tokens.
         """
-
         email = request.data.get('email')
         password = request.data.get('password')
 
@@ -55,12 +54,12 @@ class RefreshTokenView(APIView):
     def post(self, request):
         """Handle token refresh and return new access token.
 
-        Args:   
+        Args:
             request: The HTTP request object.
 
         Returns:
             Response: A JSON response with the new access token.
-            """
+        """
         refresh_token = request.data.get('refresh')
         try:
             payload = jwt.decode(
@@ -96,5 +95,5 @@ class ProtectedView(APIView):
             Response: A JSON response with a message.
         """
         return Response({
-            'message': f'Hello, {request.user.username}! Access granted.'
+            'message': f'Hello, {request.user.username}! Access granted.',
         })

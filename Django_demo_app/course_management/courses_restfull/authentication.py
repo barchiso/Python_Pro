@@ -15,6 +15,21 @@ class CustomJWTAuthentication(BaseAuthentication):
     """Custom JWT Authentication class for Django REST Framework."""
 
     def authenticate(self, request):
+        """Authenticate the user using JWT token.
+
+        Args:
+            request: The HTTP request object.
+
+        Returns:
+            tuple: A tuple containing the user and the token.
+            None: If authentication fails.
+
+        Exceptions:
+            AuthenticationFailed: If the token is invalid or expired.
+
+        Raises:
+            AuthenticationFailed: If the token is missing or invalid.
+        """
         auth_header = request.headers.get('Authorization')
         if not auth_header or not auth_header.startswith('Bearer '):
 
