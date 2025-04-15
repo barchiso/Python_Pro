@@ -41,3 +41,9 @@ If your project has a related model (via ForeignKey or ManyToMany), add it as a 
 # HW-9. Django mixins
 You need to create a mixins.py file in the project and write 10 mixins. At least 3 of them are noteworthy for the luff from your application
 Implement a column in the list that shows the number of related objects or other aggregated information.
+
+# HW-10. DRF Auth
+You need to write your own JWT authentication class, and implement the token refresh method. The token should be expatriated every 5 minutes by default, but this value should be determined in the settings. Add new authentication to existing ones.
+
+# HW-11. Docker & Docker compose
+You need to create a Dockerfile for your own project, create a docker-compose file where to connect PostgreSQL in a separate container.

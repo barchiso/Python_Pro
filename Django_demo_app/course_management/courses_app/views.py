@@ -1,5 +1,5 @@
 """Views for course access with user authentication in the courses app."""
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, TemplateView
 
@@ -86,3 +86,9 @@ class DeleteCourseView(DeleteView):
     model = Course
     template_name = 'courses_app/course_confirm_delete.html'
     success_url = reverse_lazy('course_view')
+
+
+class HomeView(TemplateView):
+    """View for the home page."""
+
+    template_name = 'courses_app/home.html'
