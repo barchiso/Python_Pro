@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Platform</title>
+    <style>
+        .block {
+            margin-bottom: 20px;
+        }
+        .block button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .block button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Study Platform!</h1>
+    
+    <!-- Block 1: Admin -->
+    <div class="block">
+        <h2>Admin</h2>
+        <button onclick="window.location.href='/admin/'">Go to Admin</button>
+    </div>
+
+    <!-- Block 2: Members Session -->
+    <div class="block">
+        <h2>Members Session</h2>
+        <button onclick="window.location.href='/members_app/session/'">Go to Members Session</button>
+    </div>
+
+    <!-- Block 3: Courses, Courses admin -->
+    <div class="block">
+        <h2>Courses</h2>
+        <button onclick="window.location.href='/courses_app/courses_page/'">View Courses</button>
+        <button onclick="window.location.href='/courses_app/admin_page/'">Go to Courses Admin</button>
+    </div>
+
+    <!-- Block 4: Accounts Tags, Accounts Info -->
+    <div class="block">
+        <h2>Accounts</h2>
+        <button onclick="window.location.href='/accounts/tags/'">View Accounts Tags</button>
+        <button onclick="window.location.href='/accounts/user_info/'">View Accounts Info</button>
+    </div>
+
+    <!-- Block 5: API Protected, API Login, API Refresh -->
+    <div class="block">
+        <h2>API</h2>
+        <button onclick="window.location.href='/api/protected/'">API Protected</button>
+        <button onclick="window.location.href='/api/login/'">API Login</button>
+        <button onclick="window.location.href='/api/refresh/'">API Refresh</button>
+    </div>
+</body>
+</html>

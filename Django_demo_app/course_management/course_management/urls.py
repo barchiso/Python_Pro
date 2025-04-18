@@ -19,8 +19,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from courses_app.views import HomeView
 
 urlpatterns = [
+    path('', HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('members_app/', include('members_app.urls')),
     path('courses_app/', include('courses_app.urls')),

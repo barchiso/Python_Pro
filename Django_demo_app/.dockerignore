@@ -1,0 +1,33 @@
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignore environment files
+.env
+*.env
+
+# Ignore virtual environments
+venv/
+.env/
+.env.bak/
+
+# Ignore Git
+.git/
+.gitignore
+
+# Ignore Docker-related
+Dockerfile
+.dockerignore
+
+# Ignore build artifacts
+*.log
+*.sqlite3
+*.db
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore tests if not needed in container
+tests/
